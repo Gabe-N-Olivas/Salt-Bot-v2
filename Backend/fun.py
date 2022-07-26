@@ -54,6 +54,8 @@ async def gato(ctx):
     del(ctx, randImg, path)
 
 async def slap(ctx, member):
+    ###TODO Add local image source
+    ###TODO maybe add a reaction system where users can duel?
     log.com(ctx)
     await ctx.send(f"{ctx.author.mention} has slapped <@{member.id}>!\nhttps://tenor.com/view/nope-stupid-slap-in-the-face-phone-gif-15151334")
     del(ctx, member)

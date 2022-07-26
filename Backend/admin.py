@@ -16,7 +16,7 @@ except ImportError: raise ImportError("Import error in admin.py: One or more imp
 async def createCredit(ctx, member): #Adds a user to the credit system
     log.com(ctx)
     try:
-        with open('../txt/credit.json', 'r') as f: users = json.load(f) #Opens the JSON file Credit and assigns it to f / #Loads our data and assigns it to users
+        with open('./Frontend/txt/credit.json', 'r') as f: users = json.load(f) #Opens the JSON file Credit and assigns it to f / #Loads our data and assigns it to users
     except: raise FileNotFoundError("createCredit in admin.py Error: credit.json doesn't seem to exist!\nIf it's missing, create a new file in ../txt/ and name it credit.json") # If the credit.json file is missing then the bot reports to the console on a quick fix
 
     if not f'{member.id}' in users: #Checks if the user isn't in the credit system
@@ -26,7 +26,7 @@ async def createCredit(ctx, member): #Adds a user to the credit system
         log.me(f"{member} was added to credit system")
     else: await ctx.send("User already in system!") #If the user is already in system then it outputs a notification to the admin
         
-    with open('../txt/credit.json', 'w') as f: #Opens the JSON file Credit and assigns it to f
+    with open('./Frontend/txt/credit.json', 'w') as f: #Opens the JSON file Credit and assigns it to f
         json.dump(users, f) #Dumps or information into the Credit file
 
     del(f, users ,member, ctx)
@@ -39,7 +39,7 @@ async def credit(ctx, credit, member, reason):
     except: await ctx.send("Time amount isn't a number!"); return # Triggers on a non int input
     
     try:
-        with open('../txt/credit.json', 'r') as f: users = json.load(f)  #Opens the JSON file Credit and assigns it to f / #Loads our data and assigns it to users
+        with open('./Frontend/txt/credit.json', 'r') as f: users = json.load(f)  #Opens the JSON file Credit and assigns it to f / #Loads our data and assigns it to users
     except: raise FileNotFoundError("credit in admin.py Error: credit.json doesn't seem to exist!\nIf it's missing, create a new file in ../txt/ and name it credit.json") # If the credit.json file is missing then the bot reports to the console on a quick fix
     
     try: users[f'{member.id}']['credit'] += credit # writes credit amount to the user and selected user ID 
@@ -55,7 +55,7 @@ async def credit(ctx, credit, member, reason):
     elif credit < 0: await ctx.send(f"Uh Oh {member} you lost {credit} credit(s)!")
     else: await  ctx.send(f"Hmmm looks like your credit stays the same...")
     
-    with open('../txt/credit.json', 'w') as f: json.dump(users, f) # If all is successful the credit is written to the .json file 
+    with open('./Frontend/txt/credit.json', 'w') as f: json.dump(users, f) # If all is successful the credit is written to the .json file 
 
     if reason != None: await ctx.send(f"Reason: {reason}") # Repeats message echoed by an admin
 

@@ -51,7 +51,7 @@ for line in token: #t0ken should only have 1 line!!!
 if t0kenOF != 1: raise Exception("bot.py t0ken Error: Your t0ken file is not valid!\nMaybe you have more than one line in your file?") #If your t0ken file is not 1 line then the program will not run
 else: del(t0kenOF) # After this point t0ken overflow will not be needed
 
-v = "Beta2.0.Stable"
+v = "2.0.Stable"
 
 if v.startswith("Beta"): devmode = True # This enables dev testing while the bot is still in beta
 else: devmode = False

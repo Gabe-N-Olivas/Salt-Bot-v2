@@ -54,5 +54,5 @@ async def deleteLog():
     now = datetime.now()
     time = now.strftime("%d")
     if time == 1: 
-        try: os.remove("../log.txt")
+        try: os.remove("log")
         except: log.me("Log Created\nThis file was made because deleteLog tried to delete a non-existent log")

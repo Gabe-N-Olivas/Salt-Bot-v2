@@ -4,6 +4,18 @@
 A discord bot used by me and my friends feel free to fork and use on your server! This is a bot mean't to do everything!* It includes some basic bot functions, administration tools, games, and much more!
 
 *By everything I mean what ever I put into it
+
+### **Beta Warning**
+All beta versions of Salt Bot have devmode enabled by default to hange this replace the line 
+```py 
+if v.startswith("Beta"): devmode = True
+else: devmode = False
+```
+with
+```py
+devmode = False
+```
+
 ## Installation
 
 This is a pure python project which means there's no way to "install" it but you can run it and here's how

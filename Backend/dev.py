@@ -4,6 +4,7 @@
 
 if __name__ == "__main__": raise Exception("This is a module to the main bot.py file. This was not created to run independently")
 
+###TODO Get restart functionality working
 
 try: import discord, asyncio
 except ImportError: raise ImportError("Import error in dev.py: One or more imports are missing!\nList of imports used: 'discord', 'asyncio'\nTry updating or installing these with pip")

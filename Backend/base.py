@@ -135,7 +135,7 @@ async def credStat(ctx, member):
     except: await ctx.send("That isn't a valid user!"); return # If the user mentioned isn't a user then it returns that to the end-user
     
     try: 
-        with open('../txt/credit.json', 'r') as c: users = json.load(c) # reads the credit.json file
+        with open('./Frontend/txt/credit.json', 'r') as c: users = json.load(c) # reads the credit.json file
         del(c)
     except: raise FileNotFoundError("credStat in base.py Error: credit.json doesn't seem to exist!\n If it's missing, create a new file in ../txt/ and name it credit.json")
     
