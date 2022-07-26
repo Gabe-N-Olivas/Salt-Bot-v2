@@ -9,7 +9,7 @@ except ImportError: raise ImportError("Import error in log.py: One or more impor
 def me(logInfo):
     now = datetime.now()
     time = now.strftime("%Y-%m-%d %H:%M:%S")
-    logMe = open(f"../log.me", "a", encoding="utf8")
+    logMe = open(f"log", "a", encoding="utf8")
     print(f"{time} {logInfo}", file=logMe), logMe.close()
 
 def com(ctx):

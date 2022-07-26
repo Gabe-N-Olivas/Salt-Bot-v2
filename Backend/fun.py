@@ -31,30 +31,27 @@ async def copypasta(ctx, txt):
         except discord.errors.HTTPException:
             log.me(f"{path} is longer than 2000 words and unfortunately can not be sent by the bot")
             await ctx.send("That file doesn't exist")
-        del(path)
+        del(path, oPath)
     del(ctx, txt)
 
 async def memeMe(ctx):
     log.com(ctx)
-    path = './Frontend/img/'
-    randImg = os.listdir(f'{path}RandMeme/')
-    path = (f"{path}/{random.choice(randImg)}")  # Selects a random element from the list
-    await ctx.send(file=discord.File(path))
+    randImg = os.listdir(f'./Frontend/img/RandMeme/')
+    path = (f"./Frontend/img/RandMeme/{random.choice(randImg)}")  # Selects a random element from the list
+    try: await ctx.send(file=discord.File(path))
+    except discord.HTTPException:
+        await ctx.send("Whoops! The file i choose was too big. Try again")
+        log.me(f"File:{path} is too large to be sent")
     log.me(f"{path} was picked")
     del(ctx, randImg, path)
 
 async def gato(ctx):
     log.com(ctx)
-    path = './Frontend/img/'
-    randImg = os.listdir(f'{path}gato/')
-    path = (f"{path}{random.choice(randImg)}")  # Selects a random element from the list
+    randImg = os.listdir(f'./Frontend/img/gato/')
+    path = (f"./Frontend/img/gato/{random.choice(randImg)}")  # Selects a random element from the list
     await ctx.send(file=discord.File(path))
     log.me(f"{path} was picked")
     del(ctx, randImg, path)
-
-async def GOTM(ctx, link):
-    log.com(ctx)
-    await ctx.send(f"GOTM (Game Of The Month)\n\nSave Up your V-Bucks because every 20th day of the month the mods will be giving us a game to buy (<$30) and possibly play for the month\nThis month's game is: {link}")
 
 async def slap(ctx, member):
     log.com(ctx)

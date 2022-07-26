@@ -72,17 +72,17 @@ async def test(ctx):
 async def privacyPolicy(ctx):
     log.com(ctx)
 
-    await ctx.send("") # Edit this with your Privacy Policy
+    await ctx.send("https://github.com/Gabe-N-Olivas/Salt-Bot-v2/blob/main/privacyPolicy.md") # Edit this with your Privacy Policy
     
     del(ctx)
 
 async def about(ctx, v):
     log.com(ctx)
     
-    #try: await ctx.send(file=discord.File(f"Frontend/MOTV{v}.png")) #Tries to find MOTV and make sure it's the correct version
-    #except: log.me("Frontend MOTV missing! Maybe your using an old version of MOTV?") 
-    # Writing these two blocks separate makes sure that the text is at least sent even if the MOTV file is missing
-    await ctx.send(f"This is SaltBOT {v}\nThis bot was created by Gabe-N-Olivas\nThis work is licensed under the GNU General Public License v2. \nThe official repository for SaltBOT is located at https://drive.google.com/drive/u/0/folders/1GgQM5R66Di8BkhZEB-81LSLcIWJWpk5d")
+    #//try: await ctx.send(file=discord.File(f"Frontend/MOTV{v}.png")) #Tries to find MOTV and make sure it's the correct version
+    #//except: log.me("Frontend MOTV missing! Maybe your using an old version of MOTV?") 
+    #// Writing these two blocks separate makes sure that the text is at least sent even if the MOTV file is missing
+    await ctx.send(f"This is SaltBOT {v}\nThis bot was created by Gabe-N-Olivas\nThis work is licensed under the GNU General Public License v2. \nThe official repository for SaltBOT is located at https://github.com/Gabe-N-Olivas/Salt-Bot-v2")
 
     del(ctx)
 

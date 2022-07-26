@@ -144,7 +144,7 @@ async def gato(ctx):
 async def GOTM(ctx, link):
     await f.GOTM(ctx, link)
 
-@bot.command(name="slap", help = f"slap a person! | fap (user)")
+@bot.command(name="slap", help = f"slap a person! | slap (user)")
 async def fap(ctx, member : discord.Member):
     await f.slap(ctx, member)
 
