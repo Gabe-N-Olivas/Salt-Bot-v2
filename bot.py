@@ -40,7 +40,7 @@ except ImportError:
 
 ## Variables
 # This reads the token file
-try: token = open('../t0ken.secret', 'r')
+try: token = open('t0ken.secret', 'r')
 except: raise Exception("bot.py t0ken Error: Your token file could not be found!")
 
 t0kenOF = 0 # Sets up our t0ken overflow variable for our for loop
