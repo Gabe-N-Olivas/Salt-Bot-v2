@@ -24,6 +24,9 @@ Then enter the following commands
 
 
 After that you may also want to customize it a little. Some ways you can do this is by replacing images in the ```./Frontend/RandMeme``` folder with your own fun images and fill in ./Frontend/txt/pasta with your own funny messages (so long as they're under 4000 characters).
+
+Another thing you may want to do is change the default dev password (root) using the the makehash.py file.
+
 ## Roadmap
 
 Right now I'm the only one who's running this project and between school, and work I may not have a ton of time to work on this project. That being said here's what I plan for the future of this bot in order of priority:
