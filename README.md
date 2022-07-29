@@ -16,6 +16,54 @@ with
 devmode = False
 ```
 
+## Basic Setup
+
+### Token Setup
+
+For your bot to work you must first create a Discord bot to do this you must go to [The Discord Developer Portal](https://discord.com/developers/applications) and create a bot. Once you sign in you have to create an application this is going to be your bot. 
+
+![First Step](.READMEimg/Step1.png)
+
+Once you're there you're going to name your project whatever you want! (Note: This will not be the display name of your bot to other users. That step will come later.)
+
+![Second Step](.READMEimg/Step2.png)
+
+Here is where we make our bot! Ignore all of the other sections the only part we care about is the Build-A-Bot in the Bot Section
+
+![Third Step](.READMEimg/Step3.png) 
+![Third Step Continued](.READMEimg/Step3.1.png)
+
+Once you do that you'll generate a new user! This is what is shown to the people using your bot! Here you can change the public name and image. What we're interested in here is the token. While you're here enable "Requires OAuth2 Code Grant" and if you want others to use your bot you may enable "Public Bot" so others may also add it to their server
+
+![Fourth Step](.READMEimg/Step4.png) 
+![Fourth Step Continued](.READMEimg/Step4.1.png) (BTW this token is invalid don't even try to use it)
+
+Next we need the bot to recognize this token. To do this we save it to a file called `t0ken.secret` in the root directory of the Salt Bot install. You can use Notepad or any other plaintext editing tool to save this file. 
+
+![Fifth Step](.READMEimg/Step5.png) 
+![Fifth Step Continued](.READMEimg/Step5.1.png)
+
+### Server Setup
+
+To set up your bot to be visible in a server you need to go back to the Bot section in the Discord Developer Portal and enable all privileged gateway intents.
+
+![Sixth Step](.READMEimg/Step6.png)
+![Sixth Step Continued](.READMEimg/Step6.1.png)
+
+Next we're going to create a URL. This is what will enable our bot to join a server. In order for our bot to join a server you are going need  
+admin privileges in that server or else this bot will not be able to join. Then check the "bot" box and in the next section only enable the "Administrator" box.
+
+![Seventh Step](.READMEimg/Step7.png)
+![Seventh Step Continued](.READMEimg/Step7.1.png)
+
+You'll then get a link generated at the bottom of the page. Simply copy and paste it into your favorite browser and log in to Discord if needed. Then select the server which you're going to put the bot into.
+
+![Eighth Step](.READMEimg/Step8.png)
+
+Voila! Your bot is now in a server follow the next section to bring your bot online!
+
+![Ninth Step](.READMEimg/Step9.png)
+
 ## Installation
 
 This is a pure python project which means there's no way to "install" it but you can run it and here's how
@@ -25,7 +73,7 @@ This is a pure python project which means there's no way to "install" it but you
   cd Salt-Bot-V2
   python3 bot.py
 ```
-If you want to run this in the background do the following (This is assuming this script is job #1 to be sure run ```jobs``` to see which job this script this is):
+If you want to run this in the background do the following (This is assuming this script is job #1 to be sure run `jobs` to see which job this script this is):
 
 Do the key combo 'Ctrl+Z'
 Then enter the following commands
@@ -69,4 +117,3 @@ Also this is not legal advice I'm just a novice programmer not a fully trained l
 - what I *MUST* do: This license requires me to **Include Original Code**, **Disclose Source Code**, **Include License**, and **State Changes To Source Code**
 
   [Read Full License Here](https://www.gnu.org/licenses/old-licenses/gpl-2.0.html)
-
