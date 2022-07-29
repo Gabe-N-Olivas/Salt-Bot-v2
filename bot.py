@@ -6,8 +6,9 @@
 ## Global python modules
  
 ###!    Goals for future versions: 
-###TODO 2.1 implement embeds
-###TODO 2.2 add a .conf file to control setting from OUTSIDE the bot
+
+###TODO 2.1 add a .conf file to control setting from OUTSIDE the bot
+###TODO 2.2 implement embeds
 ###TODO 2.3 add a console for direct access to commands 
 ###TODO 2.4 switch commands from prefix based to discords "/" commands
 
