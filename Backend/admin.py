@@ -17,7 +17,7 @@ async def createCredit(ctx, member): #Adds a user to the credit system
     log.com(ctx)
     try:
         with open('./Frontend/txt/credit.json', 'r') as f: users = json.load(f) #Opens the JSON file Credit and assigns it to f / #Loads our data and assigns it to users
-    except: raise FileNotFoundError("createCredit in admin.py Error: credit.json doesn't seem to exist!\nIf it's missing, create a new file in ../txt/ and name it credit.json") # If the credit.json file is missing then the bot reports to the console on a quick fix
+    except: raise FileNotFoundError("createCredit in admin.py Error: credit.json doesn't seem to exist!\nIf it's missing, create a new file in ./Frontend/txt/ and name it credit.json") # If the credit.json file is missing then the bot reports to the console on a quick fix
 
     if not f'{member.id}' in users: #Checks if the user isn't in the credit system
         users[f'{member.id}'] = {} #Encases the user id in curly brackets for formatting purposes
@@ -40,14 +40,14 @@ async def credit(ctx, credit, member, reason):
     
     try:
         with open('./Frontend/txt/credit.json', 'r') as f: users = json.load(f)  #Opens the JSON file Credit and assigns it to f / #Loads our data and assigns it to users
-    except: raise FileNotFoundError("credit in admin.py Error: credit.json doesn't seem to exist!\nIf it's missing, create a new file in ../txt/ and name it credit.json") # If the credit.json file is missing then the bot reports to the console on a quick fix
+    except: raise FileNotFoundError("credit in admin.py Error: credit.json doesn't seem to exist!\nIf it's missing, create a new file in ./Frontend/txt/ and name it credit.json") # If the credit.json file is missing then the bot reports to the console on a quick fix
     
     try: users[f'{member.id}']['credit'] += credit # writes credit amount to the user and selected user ID 
     except KeyError: 
         await ctx.send(f"That user doesn't exist in the credit system! Attempting to add them to credit system...") # If the user doesn't exist then it reports back how to add them to credit system
         await createCredit(ctx, member) # Invokes createCredit to add a user to credit.json
         await ctx.send("Success! Writing information...")
-        with open('../txt/credit.json', 'r') as f: users = json.load(f) # Reloads credit.json
+        with open('./Frontend/txt/credit.json', 'r') as f: users = json.load(f) # Reloads credit.json
         users[f'{member.id}']['credit'] += credit # writes credit amount to the user and selected user ID
 
     
@@ -75,8 +75,9 @@ async def purge(ctx, amount):
 
 async def mute(ctx, member):
     log.com(ctx)
-    try: role = discord.utils.get(member.guild.roles, name="Muted"); await member.add_roles(role) # Attempts to get the servers muted role
-    except: await ctx.send("You dont have a Muted role!\nPlease create a role named 'Muted' without quotes to make this function work"); return # If there is no muted role then it tells the end user that it could not find the muted role ### maybe make bot add Muted role?
+    #try: 
+    role = discord.utils.get(member.guild.roles, name="Muted"); await member.add_roles(role) # Attempts to get the servers muted role
+    #except: await ctx.send("You dont have a Muted role!\nPlease create a role named 'Muted' without quotes to make this function work"); return # If there is no muted role then it tells the end user that it could not find the muted role ### maybe make bot add Muted role?
     
     await ctx.send(f"{member} has been muted")
      

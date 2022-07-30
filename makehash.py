@@ -2,7 +2,8 @@
 
 if __name__ != "__name__": raise Exception("This script was not created to be run as a module") 
 
-from passlib.hash import bcrypt
+try: from passlib.hash import bcrypt
+except ImportError: raise ImportError("You seem to be missing passlib! This module is required to make a hash file")
 
 password= input("Enter a password > ")
 hashed = bcrypt.hash(password)

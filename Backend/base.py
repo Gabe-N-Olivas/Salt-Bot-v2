@@ -47,9 +47,9 @@ async def newMember(member):
     
     # Attempts to add a user to the credit system
     try:
-        with open('../txt/credit.json', 'r') as f: users = json.load(f)
+        with open('./Backend/txt/credit.json', 'r') as f: users = json.load(f)
     # If the credit.json can not be found it logs this error to the console
-    except: log.me(f"{member.name} could not be added to credit system as it doesn't exist"); raise Exception("newMember in admin.py Error: credit.json doesn't seem to exist!\n If it's missing, create a new file in ../txt/ and name it credit.json")
+    except: log.me(f"{member.name} could not be added to credit system as it doesn't exist"); raise Exception("newMember in admin.py Error: credit.json doesn't seem to exist!\n If it's missing, create a new file in ./Frontend/txt/ and name it credit.json")
 
     # Only adds new members to avoid conflicts with two different credit scores for the same user
     if not f'{member.id}' in users:
@@ -58,7 +58,7 @@ async def newMember(member):
         log.me(f"{member.name} was DMed when they joined a server\nThey also were added to the credit system")
     else: log.me(f"{member.name} was DMed when they joined a server\nThey were already in the credit system")
     # When all is finished it saves the data to the credit.json file
-    with open('../txt/credit.json', 'w') as f: json.dump(users, f)
+    with open('./Frontend/txt/credit.json', 'w') as f: json.dump(users, f)
 
     del(guild, msg, f, member)
 
@@ -137,7 +137,7 @@ async def credStat(ctx, member):
     try: 
         with open('./Frontend/txt/credit.json', 'r') as c: users = json.load(c) # reads the credit.json file
         del(c)
-    except: raise FileNotFoundError("credStat in base.py Error: credit.json doesn't seem to exist!\n If it's missing, create a new file in ../txt/ and name it credit.json")
+    except: raise FileNotFoundError("credStat in base.py Error: credit.json doesn't seem to exist!\n If it's missing, create a new file in .Frontend/txt/ and name it credit.json")
     
     try: 
         credit = users[str(id)]['credit'] # finds the credit amount

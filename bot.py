@@ -140,11 +140,6 @@ async def memeMe(ctx):
 async def gato(ctx):
     await f.gato(ctx)
 
-@bot.command(name="GOTM", help=f"Automatically format a GOTM message with just a link to the game | GOTM (link)")
-@commands.has_role('BotAuth')
-async def GOTM(ctx, link):
-    await f.GOTM(ctx, link)
-
 @bot.command(name="slap", help = f"slap a person! | slap (user)")
 async def fap(ctx, member : discord.Member):
     await f.slap(ctx, member)
