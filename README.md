@@ -85,7 +85,7 @@ Then enter the following commands
 ```
 
 
-After that you may also want to customize it a little. Some ways you can do this is by replacing images in the ```./Frontend/RandMeme``` folder with your own fun images and fill in ./Frontend/txt/pasta with your own funny messages (so long as they're under 4000 characters).
+After that you may also want to customize it a little. Some ways you can do this is by replacing images in the ```./Frontend/RandMeme``` folder with your own fun images and fill in ./Frontend/txt/pasta with your own funny messages (so long as they're under 4000 characters and the file's name all lowercase and a .txt file).
 
 Another thing you may want to do is change the default dev password (root) using the the makehash.py file.
 

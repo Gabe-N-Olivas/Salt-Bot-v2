@@ -149,11 +149,6 @@ async def fap(ctx, member : discord.Member):
 
 
 ## ADMIN ONLY COMMANDS
-@bot.command(name="createcredit", help=f"Gives members credit if they give out good posts | createcredit (user)")
-@commands.has_role('BotAuth')
-async def createCredit(ctx, member : discord.Member):
-    await a.createCredit(ctx, member)
-
 @bot.command(name="credit", help=f"Gives members credit if they give out good posts | credit (+number, -number) (member) (Reason)[optional]")
 @commands.has_role('BotAuth')
 async def credit(ctx, credit, member : discord.Member, *, reason = None):

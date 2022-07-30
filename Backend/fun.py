@@ -17,7 +17,7 @@ async def copypasta(ctx, txt):
         if txt == "rand" or txt == None:
             txt = os.listdir(path)
             oPath = (f"{path}{random.choice(txt)}")  # Selects a random element from the list
-        else: oPath = (f"{path}{txt}.txt")
+        else: oPath = (f"{path}{txt.lower()}.txt")
 
         try:
             with open(oPath, "r", encoding="utf8") as p:
@@ -27,7 +27,7 @@ async def copypasta(ctx, txt):
             log.me(f"{path} was picked")
         except FileNotFoundError: 
             await ctx.send("That file doesn't exist!")
-            log.me(f"User tried to open non-existent file '{path}'")
+            log.me(f"User tried to open non-existent file '{oPath}'")
         except discord.errors.HTTPException:
             log.me(f"{path} is longer than 2000 words and unfortunately can not be sent by the bot")
             await ctx.send("That file doesn't exist")

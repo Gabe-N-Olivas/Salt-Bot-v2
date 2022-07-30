@@ -38,7 +38,8 @@ async def createCredit(ctx, member): #Adds a user to the credit system
 
 async def credit(ctx, credit, member, reason):
     log.com(ctx)
-        
+    ###TODO Create key which logs which server the credit is given to
+
     try: credit = int(credit) #stops non ints from being added to the system
     except ValueError: await ctx.send("You need to use a whole number for time amount!"); return # Triggers on decimal input
     except: await ctx.send("Time amount isn't a number!"); return # Triggers on a non int input
