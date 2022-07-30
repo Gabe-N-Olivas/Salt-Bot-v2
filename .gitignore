@@ -1,5 +1,6 @@
 *.secret
 log
 __pycache__/
+*.pyc
 dnr*
 *.json

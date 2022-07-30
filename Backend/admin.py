@@ -2,6 +2,11 @@
 ### This file has been approved for a stable release as of revision 2
 # Last Modified 7/24/2022
 
+from dis import disco
+
+from attr import Attribute
+
+
 if __name__ == "__main__": raise Exception("This is a module to the main bot.py file. This was not created to run independently")
 
 try: import json, discord
@@ -75,9 +80,9 @@ async def purge(ctx, amount):
 
 async def mute(ctx, member):
     log.com(ctx)
-    #try: 
-    role = discord.utils.get(member.guild.roles, name="Muted"); await member.add_roles(role) # Attempts to get the servers muted role
-    #except: await ctx.send("You dont have a Muted role!\nPlease create a role named 'Muted' without quotes to make this function work"); return # If there is no muted role then it tells the end user that it could not find the muted role ### maybe make bot add Muted role?
+    try: role = discord.utils.get(member.guild.roles, name="Muted"); await member.add_roles(role) # Attempts to get the servers muted role
+    except discord.errors.Forbidden: await ctx.send("I can't assign that role! It's above my given role! Make sure my role is above Muted so I can assign this role!"); return
+    except AttributeError: await ctx.send("You dont have a Muted role!\nPlease create a role named 'Muted' without quotes to make this function work"); return # If there is no muted role then it tells the end user that it could not find the muted role ### maybe make bot add Muted role?
     
     await ctx.send(f"{member} has been muted")
      
@@ -92,7 +97,8 @@ async def unmute(ctx, member):
     log.com(ctx)
     
     try: role = discord.utils.get(member.guild.roles, name="Muted"); await member.remove_roles(role) # Attempers to get the servers muted role 
-    except: await ctx.send("You dont have a Muted role!\nPlease create a role named 'Muted' without quotes to make this function work"); return # If there is no muted role then it tells the end user that it could not find the muted role
+    except discord.errors.Forbidden: await ctx.send("I can't unassign that role! It's above my given role! Make sure my role is above Muted so I can unassign this role!"); return
+    except AttributeError: await ctx.send("You dont have a Muted role!\nPlease create a role named 'Muted' without quotes to make this function work"); return
 
     try: await member.create_dm(); await member.dm_channel.send(f"Hi {member.name} you've been unmuted") # Attempts to DM a user
     except: await ctx.send("User's DM couldn't be reached") # If it cant then it lets the end user know that they cant be reached
