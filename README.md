@@ -64,6 +64,8 @@ Voila! Your bot is now in a server follow the next section to bring your bot onl
 
 ![Ninth Step](.READMEimg/Step9.png)
 
+Another ting you are going to want to do is create a file in ./Frontend/txt called credit.json with just ```{}``` in it.
+
 ## Installation
 
 This is a pure python project which means there's no way to "install" it but you can run it and here's how

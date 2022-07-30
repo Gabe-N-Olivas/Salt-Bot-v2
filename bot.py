@@ -114,7 +114,7 @@ async def big(ctx, emoji: Union[discord.Emoji, str] = None):
 
 
 ## Game
-@bot.command(name="RPS", help="Play a game of Rock, Paper, Scissors!")
+@bot.command(name="rps", help="Play a game of Rock, Paper, Scissors!")
 async def RPS(ctx):
     await g.RPS(ctx)
 
