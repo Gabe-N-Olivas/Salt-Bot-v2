@@ -91,7 +91,7 @@ async def ping(ctx):
 
     ping = round((bot.latency*1000)) # Rounds out the number and changes the number to ms
     
-    if ping < 100: await ctx.send(f"Pong! Response times are great! Ping is: {ping} ms") # Each one of these levels tells the user what to expect in terms of latency
+    if ping < 100: await (f"Pong! Response times are great! Ping is: {ping} ms") # Each one of these levels tells the user what to expect in terms of latency
     elif ping < 200: await ctx.send(f"Pong! Response times are good! Ping is: {ping} ms")
     elif ping < 500: await ctx.send(f"Pong! Response times are fair. Ping is: {ping} ms\nThe Bot may be somewhat unresponsive")
     elif ping < 1000: await ctx.send(f"Pong! Response times are poor. Ping is: {ping} ms\nThe bot will be unresponsive at times")

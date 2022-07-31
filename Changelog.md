@@ -3,9 +3,13 @@ This is to test a stable release of SaltBot and showing what was done
 
 Guide
 NA - No Arguments
+
 PD - Pulls from a local directory
+
 PI - Pulls content from the internet
+
 RA - Response needed after command
+
 If a report has () next to it it means that it failed but it had a safe way of taking care of the error
 ## about 
 #### NA
@@ -30,7 +34,7 @@ If a report has () next to it it means that it failed but it had a safe way of t
 - [x] Overall Pass
 
 ## copypasta
-### PD
+#### PD
 - [x] Command Executed
 - [x] Empty argument
 - [x] Using arg 'list'
@@ -41,15 +45,15 @@ If a report has () next to it it means that it failed but it had a safe way of t
 Removed because credit can now create a credit file
 
 ## credit
-### PD
+#### PD
 - [x] Command executed
 - [x] Authorized role can execute
 - [x] Non-member used (Bad argument reported)
 - [x] Non-integer used (Bad argument reported)
-- [x] Non-logged member used (Bad argument reported)
+- [x] Non-logged member used (A new key is created for that member)
 - [x] Overall Pass
 
-## devmode (oh boy)
+## devmode
 - [x] Command Executed
 - [x] Only authorized role can access
 - [x] Applies globally
@@ -57,8 +61,29 @@ Removed because credit can now create a credit file
 - [x] Overall Pass
 
 ## forcetraceback
-### NA
+#### NA
 - [ ] Command executed (This by nature does not crash safely which is the point.)
 - [x] Overall Pass
 
-## 
+## gato
+#### NA PD
+- [x] Command executed
+- [x] Overall Pass
+
+## mememe
+#### NA PD
+- [x] Command executed
+- [x] Handles large files (Reports the file chosen was too large)
+- [x] Overall Pass
+
+## mute & unmute
+- [x] Command executed
+- [x] No Muted role in server (Reported back there is no muted role)
+- [x] Non-member used (Bad argument reported)
+- [x] Non-User used (Bad Argument Reported)
+- [x] Overall Pass
+
+## pingmod
+#### NA
+- [x] Command executed
+- [x] Overall Pass

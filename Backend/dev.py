@@ -83,20 +83,19 @@ async def forceTraceback(ctx, devmode):
         0 + "traceback" # This will clearly be a problem and hopefully be logged
     del(ctx, devmode)
 
-async def prfxChng(ctx, prfxChng, devmode):
-    if await c4d(ctx, devmode) == True:
+async def prfxChng(ctx, prfx, prfxChng, devmode):
+    if await c4d(ctx, devmode) == True and "l" not in prfxChng:
         log.com(ctx)
         await ctx.send(f"Your server prefix has been changed to {prfxChng}")
         bot.command_prefix = prfxChng # This is what truly sets the bot's prefix
         log.me(f"The prefix was changed to {prfxChng}")
-        return(prfxChng)
+        if devmode == True: prfxR = prfxChng # This is just to update the variable prfx it does NOT set the actual prefix
+        del(prfx, prfxChng, devmode)
+        return(prfxR)
+    else:
+        prfxR = prfx # Sets the prefix to the same as before
+        await ctx.send("The prefix was rejected")
     del(ctx, devmode)
-
-def prfxChngSet(prfx, prfxChng, devmode):
-    if devmode == True: prfxR = prfxChng # This is just to update the variable prfx it does NOT set the actual prefix
-    else: prfxR = prfx # Sets the prefix to the same as before
-    del(prfx, prfxChng, devmode)
-    return(prfxR)
 
 async def refresh(ctx, devmode, prfx):
     if await c4d(ctx, devmode) == True:

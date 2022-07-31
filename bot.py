@@ -136,7 +136,7 @@ async def copypasta(ctx, type = None):
 async def memeMe(ctx):
     await f.memeMe(ctx)
 
-@bot.command(name="gato", help = "floppa maker")
+@bot.command(name="gato", help = "gato maker")
 async def gato(ctx):
     await f.gato(ctx)
 
@@ -169,7 +169,7 @@ async def mute(ctx, member : discord.Member):
 async def unmute(ctx, member: discord.Member):
     await a.unmute(ctx, member)
 
-@bot.command(name="ban", help=f"Bans a user | credit (member) (Reason)[optional]")
+@bot.command(name="ban", help=f"Bans a user | ban (member) (Reason)[optional]")
 @commands.has_role('BotAuth')
 async def ban(ctx, member : discord.Member, *, reason = None):
     await a.ban(ctx, member, reason)
@@ -198,8 +198,7 @@ async def forceTraceback(ctx):
 @commands.has_role('Dev')
 async def prfxChng(ctx, prfxChng):
     global prfx
-    prfx = d.prfxChngSet(prfx, prfxChng, devmode)
-    await d.prfxChng(ctx, prfxChng, devmode)
+    prfx = await d.prfxChng(ctx, prfx, prfxChng, devmode)
 
 @bot.command(name="refresh")
 @commands.has_role('Dev')
