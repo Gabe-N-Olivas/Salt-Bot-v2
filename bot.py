@@ -180,7 +180,7 @@ async def ban(ctx, member : discord.Member, *, reason = None):
 
 @bot.command(name="devmode")
 @commands.has_role('Dev')
-async def devmodeSet(ctx, TorF):
+async def devmodeSet(ctx, TorF = None):
     global devmode
     devmode = await d.devmode(ctx, TorF, devmode)
 

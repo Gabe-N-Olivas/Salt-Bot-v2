@@ -18,12 +18,15 @@ async def devmode(ctx, TorF, devmode):
     try: from passlib.hash import bcrypt
     except ImportError: 
         await ctx.send("This command can not be used due to unknown error")
-        log.me("Passlib not installed! Install it to make dev commands work!"); return
+        log.me("Passlib not installed! Install it to make dev commands work!"); return(devmode)
 
     log.com(ctx)
 
     try: hash = open("./Backend/hash", "r")
-    except: await ctx.send("Devmode has been disabled by your bot maintainer"); return # If the hash file is not found it is assumed that the dev does not want devmode to be enabled
+    except: await ctx.send("Devmode has been disabled by your bot maintainer"); return(devmode) # If the hash file is not found it is assumed that the dev does not want devmode to be enabled
+    
+    if TorF is None: await ctx.send(f"Devmode is set to {devmode}"); return(devmode)
+    
     hashOF = 0 #Hash Overflow
     
     # Opens and reads the hash file
@@ -59,7 +62,7 @@ async def check4dev(ctx, devmode):
         del(ctx, devmode)
         return(False)
     else:
-        await ctx.send(f"Devmode is not set to either True or False! Please check any source code modifications!\nCurrent Devmode state = {devmode}\nFalling back to state False")
+        await ctx.send(f"Devmode is not set to either True or False! Please check any source code modifications!\nCurrent Devmode state = {devmode}")
         del(ctx, devmode)
         return(False)
     
