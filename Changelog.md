@@ -124,4 +124,37 @@ Removed because credit can now create a credit file
 - [x] Only authorized role can access
 - [x] Overall Pass
 
-##
+## rps
+#### RA
+- [x] Command executed
+- [x] Time out (Timeout error given)
+- [x] Non option used (Bad argument reported)
+- [x] Overall Pass
+
+## sh
+- [x] Command executed
+- [x] Only authorized role can access
+- [x] Overall Pass
+
+## slap
+- [x] Command executed
+- [x] Non-Member used (Bad argument reported)
+- [x] Non-user used (Bad argument reported)
+- [x] Overall Pass
+
+## test
+#### NA
+- [x] Command executed
+- [x] Overall Pass
+
+## testlog
+#### NA PD
+- [x] Command executed
+- [x] Only authorized role can access
+- [x] Overall Pass
+
+## toggle
+- [x] Command executed
+- [x] Only authorized role can access
+- [x] Toggle used as arg (Reports that toggle can not be used)
+- [x] Overall Pass

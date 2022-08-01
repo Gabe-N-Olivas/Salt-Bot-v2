@@ -110,6 +110,8 @@ async def toggle(ctx, devmode, command):
         command = bot.get_command(command)
         if command == None:
             await ctx.send("That command doesn't exist!"); return
+        elif command == "toggle":
+            await ctx.send("toggle can not be disabled")
         
         stateToBe = "disabled" if command.enabled else "enabled" # Checks if the command is currently enabled and if it is, it reports the state it will be after execution to be enabled to be disabled
         await ctx.send(f"Command: {command}, will be {stateToBe}\nAre you sure you want to execute? (Y/n)")
