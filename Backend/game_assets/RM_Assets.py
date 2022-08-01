@@ -12,19 +12,19 @@ async def randNum(ctx, difficulty):
     global num2
     global randOper
     optList = ("+", "-", "*")
-    if difficulty == "Baby":
+    if difficulty == "baby":
         num1 = random.randrange(0, 2)
         num2 = random.randrange(0, 2)
-    elif difficulty == "Easy":
+    elif difficulty == "easy":
         num1 = random.randrange(0, 10)
         num2 = random.randrange(0, 10)
-    elif difficulty == "Hard":
+    elif difficulty == "hard":
         num1 = random.randrange(0, 100)
         num2 = random.randrange(0, 100)
-    elif difficulty == "Nightmare":
+    elif difficulty == "nightmare":
         num1 = random.randrange(0, 1000)
         num2 = random.randrange(0, 100)
-    elif difficulty == "Hell":
+    elif difficulty == "hell":
         num1 = random.randrange(0, 1000)
         num2 = random.randrange(0, 1000)
     else:
@@ -52,8 +52,6 @@ async def display(ctx, inp):
     if inp == ans: await ctx.send("Good job!")
     else: await ctx.send(f"Wrong! The answer was {ans}!")
 
-
-    
 async def timeoutAns(ctx):
     calc()
     await ctx.send(f"The answer was {ans}")

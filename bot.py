@@ -196,7 +196,7 @@ async def forceTraceback(ctx):
 
 @bot.command(name="prfxchng")
 @commands.has_role('Dev')
-async def prfxChng(ctx, prfxChng):
+async def prfxChng(ctx, *, prfxChng):
     global prfx
     prfx = await d.prfxChng(ctx, prfx, prfxChng, devmode)
 

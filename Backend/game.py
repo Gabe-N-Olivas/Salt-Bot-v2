@@ -35,7 +35,7 @@ async def randMath(ctx):
         await ctx.send("What mode would you like to do? Easy, Hard, Nightmare")
         difficulty = await bot.wait_for(event="message", check=check, timeout=10)
         try:
-            await RM_Assets.randNum(ctx, difficulty.content)
+            await RM_Assets.randNum(ctx, difficulty.content.lower())
             ans = await bot.wait_for(event="message", check=check, timeout=10)
             await RM_Assets.display(ctx, ans.content)
             await RM_Assets.cleanup()

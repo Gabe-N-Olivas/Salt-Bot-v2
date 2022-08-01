@@ -63,6 +63,7 @@ Removed because credit can now create a credit file
 ## forcetraceback
 #### NA
 - [ ] Command executed (This by nature does not crash safely which is the point.)
+- [x] Only authorized role can access
 - [x] Overall Pass
 
 ## gato
@@ -78,6 +79,7 @@ Removed because credit can now create a credit file
 
 ## mute & unmute
 - [x] Command executed
+- [x] Only authorized role can access
 - [x] No Muted role in server (Reported back there is no muted role)
 - [x] Non-member used (Bad argument reported)
 - [x] Non-User used (Bad Argument Reported)
@@ -87,3 +89,39 @@ Removed because credit can now create a credit file
 #### NA
 - [x] Command executed
 - [x] Overall Pass
+
+## prfxchng
+- [x] Command executed
+- [x] Only authorized role can access
+- [x] Prefix with space used (Reported back the prefix was rejected)
+- [x] Overall Pass
+
+## privacypolicy
+#### NA
+- [x] Command executed
+- [x] Overall Pass
+
+## purge
+- [x] Command executed
+- [x] Only authorized role can access
+- [x] Over 20 messages deleted (Reports amount not supported)
+- [x] Non-int used (Reports invalid number used)
+- [x] Overall Pass
+
+## randmath
+#### RA
+- [x] Command executed
+- [x] Non-existent difficulty used (Defaults to hard)
+- [x] First stage timeout (Timeout error given)
+- [x] Second stage timeout (Gives the correct answer)
+- [x] Wrong answer given (Gives correct answer)
+- [x] Correct answer given
+- [x] Overall Pass
+
+## refresh
+#### NA
+- [x] Command executed
+- [x] Only authorized role can access
+- [x] Overall Pass
+
+##

@@ -84,7 +84,7 @@ async def forceTraceback(ctx, devmode):
     del(ctx, devmode)
 
 async def prfxChng(ctx, prfx, prfxChng, devmode):
-    if await c4d(ctx, devmode) == True and "l" not in prfxChng:
+    if await c4d(ctx, devmode) == True and ' ' not in prfxChng:
         log.com(ctx)
         await ctx.send(f"Your server prefix has been changed to {prfxChng}")
         bot.command_prefix = prfxChng # This is what truly sets the bot's prefix
@@ -101,8 +101,7 @@ async def refresh(ctx, devmode, prfx):
     if await c4d(ctx, devmode) == True:
         log.com(ctx)
         await ctx.send("Refreshing")
-        await bot.change_presence(status=discord.Status.online, activity=discord.Game(f"Use {prfx}, If I mess up let my maintainer @ape#3847 know")) # Resets the bots status
-    del(ctx, devmode, prfx)
+        await bot.change_presence(status=discord.Status.online, activity=discord.Game(f"Use {prfx}!"))
 
 async def toggle(ctx, devmode, command):
     if await c4d(ctx, devmode) == True:
