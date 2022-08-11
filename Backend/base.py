@@ -12,6 +12,14 @@ except ImportError: raise ImportError("Import error in base.py: One or more impo
 try: from Backend import log, define
 except ImportError: raise ImportError("Import error in base.py: One or more imports from the Backend Folder is missing!\nList of imports used: 'log'\nMake sure your install isn't corrupt or incomplete")
 
+try: import conf as c
+except: 
+    try:
+        log.me("conf.py failed to load!")
+        print("WARNING 'conf.py' NOT FOUND! Falling back to 'defcon.py'"); from Backend import defcon as c
+    except ImportError: 
+        raise Exception("Failed to load both 'conf.py' and 'defcon.py'!"); exit("Config files could not be properly loaded")
+
 bot = define.bot
 
 #This function takes a number followed by a unit and converts it ito its real time measure (i.e 1 min to 60 sec)
@@ -27,6 +35,7 @@ async def boot(prfx, v):
     await bot.change_presence(status=discord.Status.online, activity=discord.Game(f"Use {prfx}"))
     
     # Send to console
+    print("Salt Bot v2, A Discord Bot>\nCopyright (C) 2022  Gabe N Olivas\nThis program is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.")
     print("Bot has logged into server")
     print(f"{bot.user.name} {v} has booted up and is ready to use") # displays the bots name
     print(f"\n{'#'*60}\n(Linux Only) To run me in the background\nPress Ctrl+Z\nType in bash bg (restart the process in the background\nthen disown %1 (assuming this is job #1, use jobs to determine)\n{'#'*60}") # displays information on how to run this in the background
@@ -38,16 +47,14 @@ async def boot(prfx, v):
 async def newMember(member): 
     guild = str(member.guild.name)
     
-    msg = "Have Fun!"
-    
     # Attempts to contact the user
-    try: await member.create_dm(); await member.dm_channel.send(f'Hi {member.name}, welcome to {guild}! {msg}')
+    try: await member.create_dm(); await member.dm_channel.send(f'Hi {member.name}, welcome to {guild}! {c.newMemberMessage}')
     # If the user can not be DMed it just gets logged
     except: log.me(f"{member} could not be DMed")
     
     # Attempts to add a user to the credit system
     try:
-        with open('./Backend/txt/credit.json', 'r') as f: users = json.load(f)
+        with open('./Frontend/txt/credit.json', 'r') as f: users = json.load(f)
     # If the credit.json can not be found it logs this error to the console
     except: log.me(f"{member.name} could not be added to credit system as it doesn't exist"); raise Exception("newMember in admin.py Error: credit.json doesn't seem to exist!\n If it's missing, create a new file in ./Frontend/txt/ and name it credit.json")
 
@@ -60,7 +67,7 @@ async def newMember(member):
     # When all is finished it saves the data to the credit.json file
     with open('./Frontend/txt/credit.json', 'w') as f: json.dump(users, f)
 
-    del(guild, msg, f, member)
+    del(guild, f, member)
 
 async def test(ctx):
     log.com(ctx)
@@ -72,7 +79,7 @@ async def test(ctx):
 async def privacyPolicy(ctx):
     log.com(ctx)
 
-    await ctx.send("https://github.com/Gabe-N-Olivas/Salt-Bot-v2/blob/main/privacyPolicy.md") # Edit this with your Privacy Policy
+    await ctx.send(c.privacyPolicyURL)
     
     del(ctx)
 
@@ -82,7 +89,7 @@ async def about(ctx, v):
     #//try: await ctx.send(file=discord.File(f"Frontend/MOTV{v}.png")) #Tries to find MOTV and make sure it's the correct version
     #//except: log.me("Frontend MOTV missing! Maybe your using an old version of MOTV?") 
     #// Writing these two blocks separate makes sure that the text is at least sent even if the MOTV file is missing
-    await ctx.send(f"This is SaltBOT {v}\nThis bot was created by Gabe-N-Olivas\nThis work is licensed under the GNU General Public License v2. \nThe official repository for SaltBOT is located at https://github.com/Gabe-N-Olivas/Salt-Bot-v2")
+    await ctx.send(c.aboutMsg)
 
     del(ctx)
 
@@ -91,7 +98,7 @@ async def ping(ctx):
 
     ping = round((bot.latency*1000)) # Rounds out the number and changes the number to ms
     
-    if ping < 100: await (f"Pong! Response times are great! Ping is: {ping} ms") # Each one of these levels tells the user what to expect in terms of latency
+    if ping < 100: await ctx.send(f"Pong! Response times are great! Ping is: {ping} ms") # Each one of these levels tells the user what to expect in terms of latency
     elif ping < 200: await ctx.send(f"Pong! Response times are good! Ping is: {ping} ms")
     elif ping < 500: await ctx.send(f"Pong! Response times are fair. Ping is: {ping} ms\nThe Bot may be somewhat unresponsive")
     elif ping < 1000: await ctx.send(f"Pong! Response times are poor. Ping is: {ping} ms\nThe bot will be unresponsive at times")
@@ -137,7 +144,7 @@ async def credStat(ctx, member):
     try: 
         with open('./Frontend/txt/credit.json', 'r') as c: users = json.load(c) # reads the credit.json file
         del(c)
-    except: raise FileNotFoundError("credStat in base.py Error: credit.json doesn't seem to exist!\n If it's missing, create a new file in .Frontend/txt/ and name it credit.json")
+    except: raise FileNotFoundError("credStat in base.py Error: credit.json doesn't seem to exist!\n If it's missing, create a new file in ./Frontend/txt/ and name it credit.json")
     
     try: 
         credit = users[str(id)]['credit'] # finds the credit amount
@@ -174,7 +181,7 @@ async def big(ctx, emoji):
     # default emoji
     elif isinstance(emoji, str):
         import requests
-        url=f"https://twemoji.maxcdn.com/v/latest/72x72/{ord(emoji[0]):x}.png"
+        url=f"{c.defaultEmojiImgURL}{ord(emoji[0]):x}.png"
          # Gets the url of the emoji image from the twemoji cdn
         if requests.get(url).status_code == 404: 
             log.me(f"This user tried to use a non existent or nitro emoji URL: {url}")
