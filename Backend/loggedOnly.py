@@ -10,6 +10,15 @@ except ImportError: raise ImportError("Import error in loggedOnly.py: One or mor
 try: from Backend import log
 except ImportError: raise ImportError("Import error in loggedOnly.py: One or more imports from the Backend Folder is missing!\nList of imports used: 'log'\nMake sure your install isn't corrupt or incomplete")
 
+try: import conf as c
+except: 
+    try:
+        from Backend import log
+        log.me("conf.py failed to load!")
+        print("WARNING 'conf.py' NOT FOUND! Falling back to 'defcon.py'"); from Backend import defcon as c
+    except ImportError: 
+        raise Exception("Failed to load both 'conf.py' and 'defcon.py'!"); exit("Config files could not be properly loaded")
+
 async def serverConnect(guild): # when the bot enters a new server it logs it
     log.me(f"Bot has joined {guild}")
 

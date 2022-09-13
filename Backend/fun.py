@@ -8,6 +8,15 @@ import random, os, discord
 
 from Backend import log
 
+try: import conf as c
+except: 
+    try:
+        from Backend import log
+        log.me("conf.py failed to load!")
+        print("WARNING 'conf.py' NOT FOUND! Falling back to 'defcon.py'"); from Backend import defcon as c
+    except ImportError: 
+        raise Exception("Failed to load both 'conf.py' and 'defcon.py'!"); exit("Config files could not be properly loaded")
+
 async def copypasta(ctx, txt):
     log.com(ctx)
     path = './Frontend/txt/pasta/'

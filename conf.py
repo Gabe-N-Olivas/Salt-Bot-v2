@@ -45,6 +45,8 @@ testLogMessage = "𝔗 (Fancy T), 😊 (Emoji), ‱ (Special Math Symbol), ※ �
 
 ### fun.py settings
 
+copypastaPath = './Frontend/txt/pasta/'
+
 ### game.py settings
 
 ### log.py settings
