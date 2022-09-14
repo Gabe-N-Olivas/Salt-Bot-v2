@@ -5,7 +5,7 @@
 #! !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 #! !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-v = "alpha2.1"
+v = "Fallback2.1"
 creditPath = './Frontend/txt/credit.json'
 hashPath = './Backend/hash'
 tokenPath = 't0ken.secret'
@@ -29,3 +29,7 @@ commandCaseInsensitivity = True
 requireHash = True
 hashIntegrityCheck = True
 testLogMessage = "𝔗 (Fancy T), 😊 (Emoji), ‱ (Special Math Symbol), ※ ௹ ⨌ (Unicode Symbols), Ὥ(Greek Symbol) This should have been saved perfectly with no boxes"
+copypastaPath = "./Frontend/txt/pasta"
+memeMePath = "./Frontend/img/memeMe"
+gatoPath = "./Frontend/img/gato"
+logSavePath = "log"

@@ -89,6 +89,8 @@ After that you may also want to customize it a little. Some ways you can do this
 
 Another thing you may want to do is change the default dev password (root) using the the makehash.py file.
 
+Configuration is also made easy using the conf.py file!
+
 ## Roadmap
 
 Right now I'm the only one who's running this project and between school, and work I may not have a ton of time to work on this project. That being said here's what I plan for the future of this bot in order of priority:

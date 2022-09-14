@@ -4,7 +4,7 @@
 
 #! DO NOT EDIT UNLESS YOU KNOW WHAT YOU ARE DOING
 
-v = "alpha2.1"
+v = "2.1"
 creditPath = './Frontend/txt/credit.json'
 hashPath = './Backend/hash'
 tokenPath = 't0ken.secret'

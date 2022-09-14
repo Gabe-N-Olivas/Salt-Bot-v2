@@ -25,8 +25,8 @@ async def copypasta(ctx, txt):
     else:
         if txt == "rand" or txt == None:
             txt = os.listdir(path)
-            oPath = (f"{path}{random.choice(txt)}")  # Selects a random element from the list
-        else: oPath = (f"{path}{txt.lower()}.txt")
+            oPath = (f"{path}/{random.choice(txt)}")  # Selects a random element from the list
+        else: oPath = (f"{path}/{txt.lower()}.txt")
 
         try:
             with open(oPath, "r", encoding="utf8") as p:
