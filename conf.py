@@ -45,12 +45,14 @@ testLogMessage = "𝔗 (Fancy T), 😊 (Emoji), ‱ (Special Math Symbol), ※ �
 
 ### fun.py settings
 
-copypastaPath = './Frontend/txt/pasta/'
+copypastaPath = "./Frontend/txt/pasta"
+memeMePath = "./Frontend/img/memeMe"
+gatoPath = "./Frontend/img/gato"
 
 ### game.py settings
 
 ### log.py settings
-
+logSavePath = "log"
 ### loggedOnly.py settings
 
 ### custom settings & imports

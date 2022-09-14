@@ -19,7 +19,7 @@ except:
 
 async def copypasta(ctx, txt):
     log.com(ctx)
-    path = './Frontend/txt/pasta/'
+    path = c.copypastaPath
     if txt == "list":
         await ctx.send(str(os.listdir(path)).replace(".txt", "")[1:-1]) 
     else:
@@ -45,8 +45,8 @@ async def copypasta(ctx, txt):
 
 async def memeMe(ctx):
     log.com(ctx)
-    randImg = os.listdir(f'./Frontend/img/RandMeme/')
-    path = (f"./Frontend/img/RandMeme/{random.choice(randImg)}")  # Selects a random element from the list
+    randImg = os.listdir(c.memeMePath)
+    path = (f"{c.memeMePath}/{random.choice(randImg)}")  # Selects a random element from the list
     try: await ctx.send(file=discord.File(path))
     except discord.HTTPException:
         await ctx.send("Whoops! The file i choose was too big. Try again")
@@ -56,8 +56,8 @@ async def memeMe(ctx):
 
 async def gato(ctx):
     log.com(ctx)
-    randImg = os.listdir(f'./Frontend/img/gato/')
-    path = (f"./Frontend/img/gato/{random.choice(randImg)}")  # Selects a random element from the list
+    randImg = os.listdir(c.gatoPath)
+    path = (f"{c.gatoPath}/{random.choice(randImg)}")  # Selects a random element from the list
     await ctx.send(file=discord.File(path))
     log.me(f"{path} was picked")
     del(ctx, randImg, path)

@@ -18,7 +18,7 @@ except:
 def me(logInfo):
     now = datetime.now()
     time = now.strftime("%Y-%m-%d %H:%M:%S")
-    logMe = open(f"log", "a", encoding="utf8")
+    logMe = open(c.logSavePath, "a", encoding="utf8")
     print(f"{time} {logInfo}", file=logMe), logMe.close()
 
 def com(ctx):

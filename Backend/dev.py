@@ -28,9 +28,9 @@ async def devmode(ctx, TorF, devmode):
     except ImportError: 
         await ctx.send("This command can not be used due to unknown error")
         log.me("Passlib not installed! Install it to make dev commands work!"); return(devmode)
-
+    
     log.com(ctx)
-
+    
     try: hash = open("./Backend/hash", "r")
     except: await ctx.send("Devmode has been disabled by your bot maintainer"); return(devmode) # If the hash file is not found it is assumed that the dev does not want devmode to be enabled
     
@@ -40,27 +40,32 @@ async def devmode(ctx, TorF, devmode):
     
     # Opens and reads the hash file
     for hsh in hash: hash = hsh.rstrip("\n"); hashOF = hashOF + 1
-    if hashOF != 1: 
+    if hashOF != 1 and c.hashIntegrityCheck == True: 
         del(hashOF)
-        raise Exception("devmode in dev.py Error: The hash file is corrupt! Devmode not set") # If the hash has more than one line then it is not valid
+        await ctx.send("Error in devmode hash. Devmode not set")
+        log.me("devmode in dev.py Error: The hash file is corrupt! Devmode not set") # If the hash has more than one line then it is not valid
+        return(devmode)
     
     hasher = bcrypt.using(rounds=12) # The default hash uses 12 rounds for the best blend of speed and security
     
     check = lambda m: m.author == ctx.author #Checks if the person responding is the message author
 
-    await ctx.send(f"!!!Before you can access Devmode you need to enter the devmode password!!!\nRemember to do this in a private channel! If this channel is not private let this command time out and do it in a private channel")
-    try:
-        password = await bot.wait_for(event="message", check=check, timeout=15)
-        await ctx.channel.purge(limit=1) # THIS IS NOT 100% SECURE! IF YOU USE THIS IN A PUBLIC CHANNEL YOUR PASSWORD WILL BE LEAKED! THIS IS BECAUSE THE PURGE COMMAND HAS A DELAY
-        if hasher.verify(password.content, hash) == True: # Checks if the hash of the message and the hash stored in hash are the same
-            del(password) # First thing you should do is remove password from memory
-            if TorF == "True": await ctx.send("Devmode on, play with this at your own risk..."); devmodeR = True; log.me(f"devmode was set to {TorF}")
-            elif TorF == "False": await ctx.send("Devmode disabled!"); devmodeR = False; log.me(f"devmode was set to {TorF}")
-            else: await ctx.send("Devmode not set, bad argument given Valid arguments: (True, False)"); devmodeR = devmode # If a bad arg is given, a timeout error is given, or the incorrect password is set devmode stays the same.
-        else: del(password); await ctx.send("Invalid Password! Devmode not set."); devmodeR = devmode
-    except asyncio.TimeoutError: await ctx.send("TimeOut Error!"); devmodeR = devmode
-    del(ctx, TorF, devmode, hash, hasher, check)
-    return(devmodeR)
+    if c.requireHash == True: 
+        await ctx.send(f"!!!Before you can access Devmode you need to enter the devmode password!!!\nRemember to do this in a private channel! If this channel is not private let this command time out and do it in a private channel")
+        try:
+            password = await bot.wait_for(event="message", check=check, timeout=15)
+            
+            await ctx.channel.purge(limit=1) # THIS IS NOT 100% SECURE! IF YOU USE THIS IN A PUBLIC CHANNEL YOUR PASSWORD WILL BE LEAKED! THIS IS BECAUSE THE PURGE COMMAND HAS A DELAY
+        except asyncio.TimeoutError: await ctx.send("TimeOut Error!")
+    
+    if hasher.verify(password.content, hash) == True or c.requireHash == False: # Checks if the hash of the message and the hash stored in hash are the same
+        if TorF == "True": await ctx.send("Devmode on, play with this at your own risk..."); devmode = True; log.me(f"devmode was set to {TorF}")
+        elif TorF == "False": await ctx.send("Devmode disabled!"); devmode = False; log.me(f"devmode was set to {TorF}")
+        else: await ctx.send("Devmode not set, bad argument given Valid arguments: (True, False)") # If a bad arg is given, a timeout error is given, or the incorrect password is set devmode stays the same.
+    else: await ctx.send("Invalid Password! Devmode not set.")
+    
+    del(ctx, TorF, password, hasher, check)
+    return(devmode)
 
 # This function just helps save time use it when making a new dev function
 async def check4dev(ctx, devmode):
@@ -82,7 +87,7 @@ async def testLog(ctx, devmode):
     if await c4d(ctx, devmode) == True:
         log.com(ctx) #log commands must be placed in the if statement or else a command will be logged twice because of check4dev
         await ctx.send("This should have saved to the log")
-        log.me(f"{ctx.message.id}, 𝔗 (Fancy T), 😊 (Emoji), ‱ (Special Math Symbol), ※ ௹ ⨌ (Unicode Symbols), Ὥ(Greek Symbol) This should have been saved perfectly with no boxes") # This provides the encoding engine different characters to process
+        log.me(f"{ctx.message.id}, {c.testLogMessage}") # This provides the encoding engine different characters to process
     del(ctx)
 
 async def forceTraceback(ctx, devmode):
